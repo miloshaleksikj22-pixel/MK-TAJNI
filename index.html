@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="mk">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MK TAJNI</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      background: #0b0b0f;
+      color: #ffffff;
+      min-height: 100vh;
+    }
+
+    header {
+      background: #111118;
+      border-bottom: 1px solid #292933;
+      padding: 18px 20px;
+      position: sticky;
+      top: 0;
+      z-index: 10;
+    }
+
+    .logo {
+      font-size: 25px;
+      font-weight: 800;
+      letter-spacing: 2px;
+    }
+
+    .tagline {
+      color: #9999a6;
+      font-size: 12px;
+      margin-top: 5px;
+    }
+
+    .container {
+      max-width: 900px;
+      margin: auto;
+      padding: 25px 18px 50px;
+    }
+
+    .hero {
+      text-align: center;
+      padding: 35px 10px;
+    }
+
+    .hero h1 {
+      font-size: 38px;
+      margin-bottom: 12px;
+    }
+
+    .hero p {
+      color: #aaaab5;
+      line-height: 1.6;
+      max-width: 650px;
+      margin: auto;
+    }
+
+    .buttons {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 12px;
+      margin: 25px 0;
+    }
+
+    .btn {
+      background: #171720;
+      border: 1px solid #30303b;
+      color: white;
+      padding: 16px;
+      border-radius: 10px;
+      text-decoration: none;
+      text-align: center;
+      font-size: 15px;
+      cursor: pointer;
+    }
+
+    .btn:hover {
+      background: #22222d;
+    }
+
+    .primary {
+      background: #ffffff;
+      color: #000000;
+      border-color: #ffffff;
+      font-weight: 700;
+    }
+
+    .section-title {
+      margin: 35px 0 15px;
+      font-size: 20px;
+    }
+
+    .card {
+      background: #111118;
+      border: 1px solid #292933;
+      border-radius: 12px;
+      padding: 18px;
+      margin-bottom: 12px;
+    }
+
+    .category {
+      color: #8f8fa0;
+      font-size: 12px;
+      margin-bottom: 8px;
+      text-transform: uppercase;
+    }
+
+    .card h3 {
+      margin-bottom: 8px;
+    }
+
+    .card p {
+      color: #b2b2bd;
+      line-height: 1.5;
+      font-size: 14px;
+    }
+
+    .privacy {
+      margin-top: 35px;
+      padding: 20px;
+      background: #15151d;
+      border: 1px solid #30303b;
+      border-radius: 12px;
+    }
+
+    .privacy h2 {
+      margin-bottom: 10px;
+    }
+
+    .privacy p {
+      color: #aaaab5;
+      line-height: 1.6;
+      font-size: 14px;
+    }
+
+    footer {
+      text-align: center;
+      color: #777783;
+      padding: 30px 15px;
+      font-size: 12px;
+    }
+
+    @media (max-width: 600px) {
+      .buttons {
+        grid-template-columns: 1fr;
+      }
+
+      .hero h1 {
+        font-size: 32px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+<header>
+  <div class="logo">MK TAJNI</div>
+  <div class="tagline">Кажи го она што не можеш јавно.</div>
+</header>
+
+<main class="container">
+
+  <section class="hero">
+    <h1>MK TAJNI</h1>
+    <p>
+      Анонимна платформа за информации, сведоштва,
+      исчезнати лица, случаи од јавен интерес и документи.
+    </p>
+  </section>
+
+  <div class="buttons">
+    <a class="btn primary" href="#">➕ Објави анонимно</a>
+    <a class="btn" href="#">🔎 Пребарај</a>
+    <a class="btn" href="#">🚨 Исчезнати лица</a>
+    <a class="btn" href="#">⚖️ Кривични случаи</a>
+    <a class="btn" href="#">📰 Информации</a>
+    <a class="btn" href="#">📁 Докази</a>
+  </div>
+
+  <h2 class="section-title">🔥 Најнови објави</h2>
+
+  <div class="card">
+    <div class="category">Информација · Непроверено</div>
+    <h3>Пример на анонимна објава</h3>
+    <p>
+      Ова е пример како ќе изгледа една објава.
+      Подоцна тука ќе се прикажуваат вистински објави.
+    </p>
+  </div>
+
+  <div class="card">
+    <div class="category">Исчезнато лице</div>
+    <h3>Пример на случај</h3>
+    <p>
+      Информациите за вистински случаи ќе се внесуваат
+      преку системот за анонимно објавување.
+    </p>
+  </div>
+
+  <section class="privacy">
+    <h2>🔒 Приватност</h2>
+    <p>
+      MK TAJNI е дизајнирана со приватноста како основен принцип.
+      Нема потреба од јавно име, профил или социјална сметка
+      за да се објави информација.
+    </p>
+  </section>
+
+</main>
+
+<footer>
+  MK TAJNI © 2026 · Проект во развој
+</footer>
+
+</body>
+</html>
