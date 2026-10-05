@@ -1,1 +1,184 @@
+<!DOCTYPE html>
+<html lang="mk">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Објави анонимно — MK TAJNI</title>
 
+<style>
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: #0b0b0b;
+    color: #f2f2f2;
+}
+
+header {
+    padding: 25px;
+    text-align: center;
+    border-bottom: 1px solid #222;
+}
+
+header h1 {
+    margin: 0;
+    font-size: 30px;
+}
+
+header p {
+    color: #aaa;
+}
+
+.container {
+    max-width: 750px;
+    margin: 40px auto;
+    padding: 20px;
+}
+
+.card {
+    background: #151515;
+    border: 1px solid #292929;
+    border-radius: 15px;
+    padding: 25px;
+}
+
+h2 {
+    margin-top: 0;
+}
+
+label {
+    display: block;
+    margin-top: 20px;
+    margin-bottom: 8px;
+    font-weight: bold;
+}
+
+input, textarea, select {
+    width: 100%;
+    box-sizing: border-box;
+    background: #0d0d0d;
+    color: white;
+    border: 1px solid #333;
+    border-radius: 10px;
+    padding: 13px;
+    font-size: 16px;
+}
+
+textarea {
+    min-height: 180px;
+    resize: vertical;
+}
+
+button {
+    width: 100%;
+    margin-top: 25px;
+    padding: 15px;
+    border: none;
+    border-radius: 10px;
+    background: #ffffff;
+    color: #000;
+    font-size: 17px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+button:hover {
+    background: #ddd;
+}
+
+.notice {
+    margin-top: 20px;
+    padding: 15px;
+    background: #101010;
+    border-left: 3px solid #888;
+    color: #bbb;
+    border-radius: 8px;
+    font-size: 14px;
+}
+
+.back {
+    display: block;
+    margin-top: 25px;
+    text-align: center;
+    color: #aaa;
+    text-decoration: none;
+}
+
+.back:hover {
+    color: white;
+}
+</style>
+</head>
+
+<body>
+
+<header>
+    <h1>MK TAJNI</h1>
+    <p>Кажи го она што не можеш јавно.</p>
+</header>
+
+<div class="container">
+
+    <div class="card">
+
+        <h2>➕ Објави анонимно</h2>
+
+        <p>
+            Сподели информација, сведоштво или приказна без да внесуваш
+            име, телефон или e-mail.
+        </p>
+
+        <form>
+
+            <label for="category">Категорија</label>
+
+            <select id="category" name="category">
+                <option>Информации</option>
+                <option>Сведоштво</option>
+                <option>Исчезнати лица</option>
+                <option>Кривични случаи</option>
+                <option>Документи / докази</option>
+                <option>Друго</option>
+            </select>
+
+            <label for="title">Наслов</label>
+
+            <input
+                type="text"
+                id="title"
+                name="title"
+                placeholder="Краток и јасен наслов"
+                maxlength="150"
+                required
+            >
+
+            <label for="content">Текст</label>
+
+            <textarea
+                id="content"
+                name="content"
+                placeholder="Напиши што сакаш да споделиш..."
+                required
+            ></textarea>
+
+            <button type="submit">
+                Објави анонимно
+            </button>
+
+        </form>
+
+        <div class="notice">
+            ⚠️ Не внесувај туѓи лични податоци, адреси, телефонски броеви
+            или други чувствителни информации. Објавите може да бидат
+            прегледани и отстранети доколку ги прекршуваат правилата.
+        </div>
+
+    </div>
+
+    <a class="back" href="index.html">
+        ← Назад на MK TAJNI
+    </a>
+
+</div>
+
+</body>
+</html>
