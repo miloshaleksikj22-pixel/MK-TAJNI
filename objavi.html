@@ -5,6 +5,8 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Објави анонимно — MK TAJNI</title>
 
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
 <style>
 body {
     margin: 0;
@@ -74,15 +76,15 @@ button {
     padding: 15px;
     border: none;
     border-radius: 10px;
-    background: #ffffff;
-    color: #000;
+    background: white;
+    color: black;
     font-size: 17px;
     font-weight: bold;
     cursor: pointer;
 }
 
-button:hover {
-    background: #ddd;
+button:disabled {
+    opacity: 0.5;
 }
 
 .notice {
@@ -95,16 +97,19 @@ button:hover {
     font-size: 14px;
 }
 
+#message {
+    margin-top: 20px;
+    padding: 15px;
+    border-radius: 8px;
+    display: none;
+}
+
 .back {
     display: block;
     margin-top: 25px;
     text-align: center;
     color: #aaa;
     text-decoration: none;
-}
-
-.back:hover {
-    color: white;
 }
 </style>
 </head>
@@ -118,67 +123,129 @@ button:hover {
 
 <div class="container">
 
-    <div class="card">
+<div class="card">
 
-        <h2>➕ Објави анонимно</h2>
+<h2>➕ Објави анонимно</h2>
 
-        <p>
-            Сподели информација, сведоштво или приказна без да внесуваш
-            име, телефон или e-mail.
-        </p>
+<p>
+Сподели информација, сведоштво или приказна без да внесуваш
+име, телефон или e-mail.
+</p>
 
-        <form>
+<form id="postForm">
 
-            <label for="category">Категорија</label>
+<label for="category">Категорија</label>
 
-            <select id="category" name="category">
-                <option>Информации</option>
-                <option>Сведоштво</option>
-                <option>Исчезнати лица</option>
-                <option>Кривични случаи</option>
-                <option>Документи / докази</option>
-                <option>Друго</option>
-            </select>
+<select id="category" required>
+    <option>Информации</option>
+    <option>Сведоштво</option>
+    <option>Исчезнати лица</option>
+    <option>Кривични случаи</option>
+    <option>Документи / докази</option>
+    <option>Друго</option>
+</select>
 
-            <label for="title">Наслов</label>
+<label for="title">Наслов</label>
 
-            <input
-                type="text"
-                id="title"
-                name="title"
-                placeholder="Краток и јасен наслов"
-                maxlength="150"
-                required
-            >
+<input
+    type="text"
+    id="title"
+    placeholder="Краток и јасен наслов"
+    maxlength="150"
+    required
+>
 
-            <label for="content">Текст</label>
+<label for="content">Текст</label>
 
-            <textarea
-                id="content"
-                name="content"
-                placeholder="Напиши што сакаш да споделиш..."
-                required
-            ></textarea>
+<textarea
+    id="content"
+    placeholder="Напиши што сакаш да споделиш..."
+    required
+></textarea>
 
-            <button type="submit">
-                Објави анонимно
-            </button>
+<button type="submit" id="submitButton">
+    Објави анонимно
+</button>
 
-        </form>
+</form>
 
-        <div class="notice">
-            ⚠️ Не внесувај туѓи лични податоци, адреси, телефонски броеви
-            или други чувствителни информации. Објавите може да бидат
-            прегледани и отстранети доколку ги прекршуваат правилата.
-        </div>
+<div id="message"></div>
 
-    </div>
-
-    <a class="back" href="index.html">
-        ← Назад на MK TAJNI
-    </a>
+<div class="notice">
+⚠️ Не внесувај туѓи лични податоци, адреси, телефонски броеви
+или други чувствителни информации.
+</div>
 
 </div>
+
+<a class="back" href="index.html">
+← Назад на MK TAJNI
+</a>
+
+</div>
+
+<script>
+
+const SUPABASE_URL = "https://ngwnwxcyqnbuvjafyfhl.supabase.co";
+
+const SUPABASE_KEY = "sb_publishable_fpyMPtpyvgGdRpzDfFPqOg_rTPbKY0g";
+
+const supabaseClient = window.supabase.createClient(
+    SUPABASE_URL,
+    SUPABASE_KEY
+);
+
+const form = document.getElementById("postForm");
+const button = document.getElementById("submitButton");
+const message = document.getElementById("message");
+
+form.addEventListener("submit", async function(event) {
+
+    event.preventDefault();
+
+    button.disabled = true;
+    button.textContent = "Се испраќа...";
+
+    const category = document.getElementById("category").value;
+    const title = document.getElementById("title").value.trim();
+    const content = document.getElementById("content").value.trim();
+
+    const { error } = await supabaseClient
+        .from("posts")
+        .insert([
+            {
+                category: category,
+                title: title,
+                content: content
+            }
+        ]);
+
+    if (error) {
+
+        console.error(error);
+
+        message.style.display = "block";
+        message.textContent =
+            "❌ Објавата не успеа да се испрати. Ќе го поправиме следниот чекор.";
+
+        button.disabled = false;
+        button.textContent = "Објави анонимно";
+
+        return;
+    }
+
+    message.style.display = "block";
+    message.textContent =
+        "✅ Објавата е успешно испратена.";
+
+    form.reset();
+
+    button.disabled = false;
+    button.textContent = "Објави анонимно";
+
+});
+
+</script>
 
 </body>
 </html>
